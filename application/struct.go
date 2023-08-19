@@ -2,7 +2,6 @@ package application
 
 import (
 	"errors"
-	"fmt"
 	"github.com/manifoldco/promptui"
 	"github.com/vinybergamo/cloud-cli/cli"
 	"github.com/vinybergamo/cloud-cli/utils"
@@ -25,12 +24,7 @@ func (a *App) SetName() {
 		},
 	}
 
-	result, err := prompt.Run()
-
-	if err != nil {
-		fmt.Printf("Prompt failed %v\n", err)
-		return
-	}
+	result := cli.PromptInput(prompt)
 
 	name := utils.FormatString(result)
 	a.Name = name
@@ -49,5 +43,5 @@ func (a *App) SelectApp() {
 		})
 	}
 
-	cli.PromptSelect(options, "Select an application")
+	cli.PromptSelect(options, "Select application")
 }
