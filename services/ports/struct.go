@@ -3,12 +3,14 @@ package ports
 import (
 	"errors"
 	"github.com/manifoldco/promptui"
+	"github.com/vinybergamo/cloud-cli/application"
 	"github.com/vinybergamo/cloud-cli/cli"
 	"strconv"
 )
 
 type Port struct {
 	Port string
+	App  application.App
 }
 
 func (p *Port) SetPort() {

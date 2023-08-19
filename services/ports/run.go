@@ -2,7 +2,6 @@ package ports
 
 import (
 	"fmt"
-	"github.com/vinybergamo/cloud-cli/application"
 	"github.com/vinybergamo/cloud-cli/cli"
 	"github.com/vinybergamo/cloud-cli/utils"
 )
@@ -17,13 +16,12 @@ func Run() {
 
 func Set() {
 	port := Port{}
-	app := application.App{}
 
-	err := utils.ValidateEmpty(app.Name, "")
+	err := utils.ValidateEmpty(port.App.Name, "")
 	if err != nil {
-		app.SelectApp()
+		port.App.SelectApp()
 	}
 
 	port.SetPort()
-	fmt.Printf("Setting Port %v for application %v.", port.Port, app.Name)
+	fmt.Printf("Setting Port %v for application %v.", port.Port, port.App.Name)
 }
